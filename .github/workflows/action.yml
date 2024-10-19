@@ -102,6 +102,7 @@ jobs:
               exit1
             fi
       - name: Destroy test function
+        # Force the job "Destroy test function" to run even if the job "Invoke test function" fail.
         if: ${{ always() }}
         run: |
             aws lambda delete-function --function-name test-function-${{ matrix.input }}
